@@ -5,4 +5,15 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: {case_sensitive: false}
+  has_secure_password
+  VALID_PASSWORD_REGEX = /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!$%^&*-]).{8,24}/
+  validates :password, length: { minimum: 8, maximum: 24}
+  validate :password_complexity
+
+  def password_complexity
+    if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!$%^&*-])/
+      return
+    end
+  end
+
 end

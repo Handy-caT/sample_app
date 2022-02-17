@@ -1,5 +1,48 @@
 <% provide(:title, 'Sign Up') %>
-<div class = "center">
-  <h1>Sign up</h1>
-  <p>This is a sign up page for new users</p>
-</div>
+
+<div class = "center ">
+  <h1 class = "mt-2 mb-4">Sign up</h1>
+
+  <%= render 'shared/error_messages', object: @user  %>
+  <div class="flex-row">
+    <%= form_with model: @user do |f| %>
+      <div class="row mb-3 justify-content-center ">
+        <div class= "col-sm-2 col-form-label" >
+          <%= f.label :name%>
+        </div>
+        <div class = "col-sm-5">
+          <%= f.text_field :name ,class: "form-control " , placeholder: "Name"%>
+          <div class="invalid-feedback">
+            Looks good!
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3 justify-content-center">
+        <div class= "col-sm-2 col-form-label" >
+          <%= f.label :email %>
+        </div>
+        <div class = "col-sm-5">
+          <%= f.email_field :email ,class: "form-control" , placeholder: "name@example.com"%>
+        </div>
+      </div>
+      <div class="row mb-3 justify-content-center">
+        <div class= "col-sm-2 col-form-label" >
+          <%= f.label :password %>
+        </div>
+        <div class = "col-sm-5">
+          <%= f.password_field :password ,class: "form-control" , placeholder: "Pa$$w0rd"%>
+        </div>
+      </div>
+      <div class="row mb-3 justify-content-center">
+        <div class= "col-sm-2 col-form-label " >
+          <%= f.label :password_confirmation %>
+        </div>
+        <div class = "col-sm-5">
+          <%= f.password_field :password_confirmation ,class: "form-control" , placeholder: "Pa$$w0rd"%>
+        </div>
+      </div>
+      <%= f.submit "Create my account", class: "btn btn-primary col-5 mt-3 mb-5" %>
+    <%end%>
+  </div>
+  </div>

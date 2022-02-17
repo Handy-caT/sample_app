@@ -2,7 +2,8 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "Test User", email: "test@test.com")
+    @user = User.new(name: "Test User", email: "test@test.com",
+                      password:"te$tPassw0rd", password_confirmation:"te$tPassw0rd")
   end
 
   test "should be valid" do
@@ -53,4 +54,33 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_not duplicate_user.valid?
   end
+
+  test "password validation should accept valid passwords" do
+    valid_passwords = %w[te$tPassw0rd t-_&hjT0y -_-_-_-_7yU
+                            #_7-yIy-7_# tesTexamle!t8com]
+    valid_passwords.each do |valid_password|
+      @user.password = @user.password_confirmation = valid_password
+      assert @user.valid?, "#{valid_password.inspect} should be valid"
+    end
+  end
+
+  test "password validation should reject invalid passwords" do
+    invalid_passwords = %w[a]
+    long_invalid_password = "a"*25
+    blank_password = '   '
+    invalid_passwords.concat [blank_password, long_invalid_password]
+
+    invalid_passwords.each do |invalid_password|
+      @user.password = @user.password_confirmation = invalid_password
+      assert_not @user.valid?, "#{invalid_password.inspect} should be invalid"
+    end
+  end
+
+  test "email should be saved in downcase" do
+    mixed_case_email = "TeSTmAil@test.CoM"
+    @user.email = mixed_case_email
+    @user.save
+    assert_equal mixed_case_email.downcase , @user.reload.email
+  end
+
 end
