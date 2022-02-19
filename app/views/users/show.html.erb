@@ -1,1 +1,20 @@
-<%= @user.name %>, <%= @user.email %>
+<% provide(:title, @user.name ) %>
+
+<div class = "">
+  <div class = "row mb-3 ">
+    <div class= "col-sm-2" >
+      <label>Name:</label>
+    </div>
+    <div class = "col">
+      <%= @user.name %>
+    </div>
+  </div>
+  <div class = "row mb-3 ">
+    <div class= "col-sm-2" >
+      <label>Email:</label>
+    </div>
+    <div class = "col">
+      <%= @user.email %>
+    </div>
+  </div>
+</div>
