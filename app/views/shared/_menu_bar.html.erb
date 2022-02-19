@@ -7,10 +7,31 @@
         <li class="nav-item"><%= link_to "Help", help_path, class: "nav-link mx-2" %></li>
         <li class="nav-item"><%= link_to "About", about_path, class: "nav-link mx-2" %></li>
       </ul>
-      <ul class = "navbar-nav d-flex align-items-baseline ">
-        <li class="nav-item"><%= link_to "Sign Up", sign_up_path, class: "nav-link mx-1" %></li>
-        <li class="nav-item"><%= link_to "Log In", log_in_path, class: "nav-link mx-1" %></li>
-      </ul>
+      <% if logged_in? %>
+        <ul class = "navbar-nav d-flex align-items-baseline ">
+          <li class="nav-item"><%= link_to "Users", '#', class: "nav-link mx-1" %></li>
+          <div class = "collapse navbar-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><%= link_to("Profile", current_user, class: "dropdown-item") %></li>
+                  <li><%= link_to("Settings", '#', class: "dropdown-item") %></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><%= link_to("Log out", log_out_path, class: "dropdown-item",method: "delete") %></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </ul>
+      <%else %>
+        <ul class = "navbar-nav d-flex align-items-baseline ">
+          <li class="nav-item"><%= link_to "Sign Up", sign_up_path, class: "nav-link mx-1" %></li>
+          <li class="nav-item"><%= link_to "Log In", log_in_path, class: "nav-link mx-1" %></li>
+        </ul>
+      <%end %>
     </nav>
   </div>
 </header>
