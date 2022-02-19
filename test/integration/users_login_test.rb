@@ -32,6 +32,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     delete log_out_path
     assert_not is_logged_in?
     assert_redirected_to root_url
+
+    delete log_out_path
     follow_redirect!
 
     assert_select "a[href=?]", log_in_path
