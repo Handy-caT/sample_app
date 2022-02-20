@@ -4,14 +4,15 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @user = User.find_by(email: params[:session][:email].downcase)
+    if @user && @user.authenticate(params[:session][:password])
+      log_in @user
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+      flash[:success] = 'Welcome back, ' + @user.name
+      redirect_to @user
 
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      log_in user
-      redirect_to user
-      flash[:success] = 'Welcome back, ' + user.name
     else
-      if !user
+      if !@user
         flash.now[:danger] = 'User with that email not found! Try again'
       else
         flash.now[:danger] = 'Invalid email and/or password! Try again'
