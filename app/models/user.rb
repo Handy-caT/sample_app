@@ -9,7 +9,7 @@ class User < ApplicationRecord
             uniqueness: {case_sensitive: false}
   has_secure_password
   VALID_PASSWORD_REGEX = /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!$%^&*-]).{8,24}/
-  validates :password, length: { minimum: 8, maximum: 24}
+  validates :password, length: { minimum: 8, maximum: 24}, allow_blank: true
   validate :password_complexity
 
   def password_complexity
