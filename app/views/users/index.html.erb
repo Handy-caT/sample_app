@@ -1,0 +1,13 @@
+<%= provide(:title,full_title("All Users")) %>
+<div class = "center">
+  <h1>All users</h1>
+  <div class="mb-3 d-flex justify-content-center ">
+    <div class = "col-sm-5">
+      <ul class = "list-group">
+        <% @user.each do |user| %>
+          <%= link_to user.name, user ,class: "list-group-item " %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
