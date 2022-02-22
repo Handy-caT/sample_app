@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.all
+    @pagy, @user = pagy User.all
   end
 
   private
