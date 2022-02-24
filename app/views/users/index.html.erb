@@ -8,8 +8,15 @@
       </div>
       <ul class = "list-group mb-3">
         <% @user.each do |user| %>
-          <%= link_to user.name, user ,class: "list-group-item " %>
+          <li class = "row list-group-item">
+            <%= link_to user.name, user, class: "text-decoration-none font-monospace"%>
+            <% if current_user.admin? && !current_user?(user) %>
+              | <%= link_to "delete", user, method: :delete,
+                            data: { confirm: "You sure?" } %>
+            <% end %>
+          </li>
         <% end %>
+
       </ul>
       <div class = "col-sm-5 d-inline-flex justify-content-center">
         <%== pagy_bootstrap_nav @pagy %>
