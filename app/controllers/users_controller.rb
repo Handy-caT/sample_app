@@ -40,7 +40,6 @@ class UsersController < ApplicationController
 
   def index
     @pagy, @user = pagy User.all
-    pa
   end
 
   def destroy
