@@ -1,37 +1,45 @@
-<header class = "p-2 bg-dark text-light ">
-  <div class = "container">
-    <nav class = "navbar navbar-expand-lg navbar-dark d-flex justify-content-between">
-      <ul class = "navbar-nav d-flex align-items-baseline ">
-        <li class="nav-item"><%= link_to "Sample App", root_path, class: "navbar-brand fw-bolder fs-4 mx-4" %></li>
-        <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link mx-2" %></li>
-        <li class="nav-item"><%= link_to "Help", help_path, class: "nav-link mx-2" %></li>
-        <li class="nav-item"><%= link_to "About", about_path, class: "nav-link mx-2" %></li>
-      </ul>
-      <% if logged_in? %>
+<% provide :main_menu do %>
+  <header class = "p-2 bg-dark text-light ">
+    <div class = "container">
+      <nav class = "navbar navbar-expand-lg navbar-dark d-flex justify-content-between">
         <ul class = "navbar-nav d-flex align-items-baseline ">
-          <li class="nav-item"><%= link_to "Users", users_path, class: "nav-link mx-1" %></li>
-          <div class = "collapse navbar-collapse">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Account
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><%= link_to("Profile", current_user, class: "dropdown-item") %></li>
-                  <li><%= link_to("Settings", edit_user_path(current_user), class: "dropdown-item") %></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><%= link_to("Log out", log_out_path, class: "dropdown-item",method: "delete") %></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+          <li class="nav-item"><%= link_to "Sample App", root_path, class: "navbar-brand fw-bolder fs-4 mx-4" %></li>
+          <li class="nav-item"><%= nav_tab "Home", root_path, class: "nav-link mx-2",
+                                           current_page: current_page %></li>
+          <li class="nav-item"><%= nav_tab "Help", help_path, class: "nav-link mx-2",
+                                           current_page: current_page %></li>
+          <li class="nav-item"><%= nav_tab "About", about_path, class: "nav-link mx-2",
+                                           current_page: current_page %></li>
         </ul>
-      <%else %>
-        <ul class = "navbar-nav d-flex align-items-baseline ">
-          <li class="nav-item"><%= link_to "Sign Up", sign_up_path, class: "nav-link mx-1" %></li>
-          <li class="nav-item"><%= link_to "Log In", log_in_path, class: "nav-link mx-1" %></li>
-        </ul>
-      <%end %>
-    </nav>
-  </div>
-</header>
+        <% if logged_in? %>
+          <ul class = "navbar-nav d-flex align-items-baseline ">
+            <li class="nav-item"><%= nav_tab "Users", users_path, class: "nav-link mx-1",
+                                             current_page: current_page %></li>
+            <div class = "collapse navbar-collapse">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Account
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><%= link_to("Profile", current_user, class: "dropdown-item") %></li>
+                    <li><%= link_to("Settings", edit_user_path(current_user), class: "dropdown-item") %></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><%= link_to("Log out", log_out_path, class: "dropdown-item",method: "delete") %></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </ul>
+        <%else %>
+          <ul class = "navbar-nav d-flex align-items-baseline ">
+            <li class="nav-item"><%= nav_tab "Sign Up", sign_up_path, class: "nav-link mx-1",
+                                             current_page: current_page %></li>
+            <li class="nav-item"><%= nav_tab "Log In", log_in_path, class: "nav-link mx-1",
+                                             current_page: current_page %></li>
+          </ul>
+        <%end %>
+      </nav>
+    </div>
+  </header>
+<% end %>
