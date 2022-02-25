@@ -65,11 +65,9 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "password validation should reject invalid passwords" do
-    invalid_passwords = %w[a]
+    invalid_passwords = %w[a testPassw0rd t-_&hjTOy -_-_-_-_7yu tesTexamle@t8com]
     long_invalid_password = "a"*25
-    blank_password = '   '
-    invalid_passwords.concat [blank_password, long_invalid_password]
-
+    invalid_passwords.concat [long_invalid_password , ""]
     invalid_passwords.each do |invalid_password|
       @user.password = @user.password_confirmation = invalid_password
       assert_not @user.valid?, "#{invalid_password.inspect} should be invalid"
@@ -81,6 +79,10 @@ class UserTest < ActiveSupport::TestCase
     @user.email = mixed_case_email
     @user.save
     assert_equal mixed_case_email.downcase , @user.reload.email
+  end
+
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?('')
   end
 
 end

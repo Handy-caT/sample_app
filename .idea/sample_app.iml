@@ -52,6 +52,7 @@
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="digest (v3.1.0, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.10.0, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faker (v2.19.0, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.15.5, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.0.0, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.9.1, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
@@ -70,6 +71,7 @@
     <orderEntry type="library" scope="PROVIDED" name="net-smtp (v0.3.1, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.8, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.13.1, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pagy (v5.10.1, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v4.0.6, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v5.6.1, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.6.0, RVM: ruby-3.1.0 [sample_app]) [gem]" level="application" />

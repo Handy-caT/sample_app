@@ -4,7 +4,8 @@
   text-align: center;
 
   h1 {
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
   }
 
   h3 {
@@ -19,9 +20,18 @@
   }
 }
 
-.right {
-  text-align: end;
+.container {
+
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+  .alert {
+    .alert-danger {
+
+    }
+  }
 }
+
 
 $color : red;
 $focus-box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($color, $input-btn-focus-color-opacity);
