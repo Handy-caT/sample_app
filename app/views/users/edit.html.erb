@@ -28,6 +28,14 @@
       </div>
       <div class="row mb-3 justify-content-center">
         <div class= "col-sm-2 col-form-label" >
+          <%= f.label :old_password %>
+        </div>
+        <div class = "col-sm-5">
+          <%= f.password_field :old_password ,class: "form-control" , placeholder: "Old password"%>
+        </div>
+      </div>
+      <div class="row mb-3 justify-content-center">
+        <div class= "col-sm-2 col-form-label" >
           <%= f.label :password %>
         </div>
         <div class = "col-sm-5">

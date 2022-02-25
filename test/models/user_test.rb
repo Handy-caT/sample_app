@@ -65,10 +65,9 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "password validation should reject invalid passwords" do
-    invalid_passwords = %w[a]
+    invalid_passwords = %w[a testPassw0rd t-_&hjTOy -_-_-_-_7yu tesTexamle@t8com]
     long_invalid_password = "a"*25
-    invalid_passwords.concat [long_invalid_password]
-
+    invalid_passwords.concat [long_invalid_password , ""]
     invalid_passwords.each do |invalid_password|
       @user.password = @user.password_confirmation = invalid_password
       assert_not @user.valid?, "#{invalid_password.inspect} should be invalid"

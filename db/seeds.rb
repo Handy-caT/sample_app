@@ -9,14 +9,14 @@ require 'faker'
 
 User.create!(name: "Admin User",
              email: "admin@user.org",
-             password: "coolAdmin",
-             password_confirmation: "coolAdmin",
+             password: "c00lAdm!n",
+             password_confirmation: "c00lAdm!n",
              admin: true)
 
 100.times do |n|
   name = Faker::Name.name
   email = "test-#{n+1}@example.org"
-  password = "password"
+  password = "Pa$$w0rd"
   User.create!(name: name,
                email: email,
                password: password,
